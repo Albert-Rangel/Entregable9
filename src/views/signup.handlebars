@@ -1,0 +1,39 @@
+{{!--
+<form action="http://localhost:8080/api/signup" , method="post">
+  <input name="username" value="username" />
+  <input name="email" value="email" />
+  <input name="password" value="password" />
+  <button value="submit">Registrarse</button>
+</form> --}}
+
+<form action="http://localhost:8080/api/signup" method="post" class="SignUp-form">
+  <div>
+    <label for="firstname">First Name </label>
+    <input id="firstname" type="text" placeholder="FUlanitol" name="firstname" required />
+  </div>
+
+  <div>
+    <label for="lastname">Last Name </label>
+    <input id="lastname" type="text" placeholder="de tal" name="lastname" required />
+  </div>
+
+  <div>
+    <label for="email">Email </label>
+    <input id="email" type="email" placeholder="fulanitodetal@example.com" name="email" required />
+  </div>
+
+
+  <div>
+    <label for="age">Age </label>
+    <input id="age" type="number" name="age" required />
+  </div>
+
+  <div>
+    <label for="password">Password </label>
+    <input id="password" type="password" placeholder="password" name="password" required />
+  </div>
+
+  <button class="btn btn--form" type="submit" value="Registrarse">
+    Register
+  </button>
+</form>

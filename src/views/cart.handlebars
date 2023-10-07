@@ -1,0 +1,17 @@
+
+
+<div class="form-container">
+    <div>
+         {{#each Products}}
+        <div class="card">
+            <img src="{{this.id.thumbnail}}" alt="..." class="images">
+            <div class="card-body">
+                Title: {{this.id.title}} </br>
+                Id: {{this.id._id}} </br>
+                Code:{{this.id.code}}</br>
+            </div>
+        </div>
+         {{/each}}
+    </div>
+</div>
+

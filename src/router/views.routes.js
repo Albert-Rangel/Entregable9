@@ -71,6 +71,14 @@ router.get('/login', publicRoutes, (req, res) => {
     })
 });
 
+router.get('/recover', publicRoutes, (req, res) => {
+    
+    res.render("recover", {
+        title: "Recover Form",
+        style: "login.css"
+    })
+});
+
 router.get('/logout', privateRoutes, (req, res) => {
     req.session.destroy()
     res.render("login", {
@@ -103,6 +111,15 @@ router.get('/profile', privateRoutes, (req, res) => {
 
 });
 
+router.get('/failsignup', publicRoutes, (req, res) => {
+    
+    res.send("fallo el registro")
+});
+
+router.get('/failogin', publicRoutes, (req, res) => {
+    
+    res.send("fallo el login")
+});
 
 function ManageAnswer(answer) {
     const arrayAnswer = []

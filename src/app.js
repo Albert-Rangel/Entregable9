@@ -9,6 +9,8 @@ import CartRoutes from './router/cartMongo.routes.js'
 import ProductManager from './dao/db/ProductManager.js'
 import ViewsRouter from './router/views.routes.js'
 import UserRouter from './router/user.router.js'
+import passport from "passport"
+import initiaizePassport from "./config/passport.config.js"
 // import { FileStore } from "session-file-store"
 import MongoStore from "connect-mongo"
 import session from "express-session"
@@ -121,6 +123,8 @@ app.use(session({
   saveUninitialized: true
 
 }))
+
+initiaizePassport();
 
 app.use('/api' , UserRouter)
 app.use('/api/products', ProductRoutes)

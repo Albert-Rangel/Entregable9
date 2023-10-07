@@ -6,3 +6,4 @@ const privateRoutes = (req, res, next) => {
     next()
 }
 export default privateRoutes
+

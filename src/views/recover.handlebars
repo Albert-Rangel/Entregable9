@@ -1,18 +1,16 @@
-
-<div class="container">
-  <div class="card">
+<div class="recover-page">
+  <div class="form">
     <h2>Recover Password Form</h2>
     <form action="http://localhost:8080/api/recover" method="post">
 
-      <label for="email">Email </label>
       <input id="email" type="text" placeholder="fulanitodetal@example.com" name="email" />
 
-      <label for="password">Password </label>
       <input id="password" type="password" placeholder="password" name="password" />
 
-      <button type="submit" class="btn btn--form">Cambiar Contraseña</button>
+      <button type="submit">Cambiar Contraseña</button>
 
-      <a href="http://localhost:8080/login" class="button">Retornar al Login</a> 
+      <p class="message">Wanna go Back?<a href="http://localhost:8080/login">Return to Login</a></p>
+
     </form>
   </div>
 </div>

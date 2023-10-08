@@ -33,11 +33,11 @@ router.get("/products", privateRoutes, async (req, res) => {
     const lastname = req.session.user.lastname;
     const age = req.session.user.age;
     const email_ = req.session.user.email;
-    const rol = req.session.user.admin ? "Admin" : "User"
+    const rol = req.session.user.rol;
 
     res.render("catalog", {
         title: "Catalog",
-        style: "home.css",
+        style: "catalog.css",
         firstname, lastname, age, email_, rol
     })
 })
@@ -63,7 +63,6 @@ router.get("/carts/:cid", async (req, res) => {
 })
 
 router.get('/login', publicRoutes, (req, res) => {
-   
     res.render("login", {
         title: "Login Form",
         style: "login.css"
@@ -74,7 +73,7 @@ router.get('/recover', publicRoutes, (req, res) => {
     
     res.render("recover", {
         title: "Recover Form",
-        style: "login.css"
+        style: "recover.css"
     })
 });
 
@@ -90,9 +89,10 @@ router.get('/signup', publicRoutes, (req, res) => {
 
     res.render("signup", {
         title: "Signup Form",
-        style: "login.css"
+        style: "signup.css"
     })
 });
+
 
 router.get('/profile', privateRoutes, (req, res) => {
 
@@ -112,7 +112,6 @@ router.get('/profile', privateRoutes, (req, res) => {
 
 router.get('/failsignup', publicRoutes, (req, res) => {
     
-    // res.send("fallo el registro")
     res.render("failsignup", {
         title: "failinf page",
         style: "failsignup.css"
@@ -121,7 +120,20 @@ router.get('/failsignup', publicRoutes, (req, res) => {
 
 router.get('/failogin', publicRoutes, (req, res) => {
     
-    res.send("fallo el login")
+    res.render("faillogin", {
+        title: "fail Login page",
+        style: "failLogin.css"
+    })
+});
+
+
+
+router.get('/test', publicRoutes, (req, res) => {
+    
+    res.render("catalog", {
+        title: "test catalog page",
+        style: "catalog.css"
+    })
 });
 
 function ManageAnswer(answer) {

@@ -15,24 +15,6 @@ router.post(
       res.status(400).send();
     }
 
-    // if (req.user.first_name == "adminCoder@coder.com" && req.user.lastname == "Administrador") {
-    //   req.session.user = {
-    //     firstname: req.user.firstname,
-    //     lastname: req.user.lastname,
-    //     email: req.user.email,
-    //     age: req.user.age,
-    //     admin: true
-    //   };
-    // } else {
-    //   req.session.user = {
-    //     firstname: req.user.firstname,
-    //     lastname: req.user.lastname,
-    //     email: req.user.email,
-    //     age: req.user.age,
-    //     admin: false
-    //   };
-    // }
-
     req.session.user = {
       firstname: req.user.firstname,
       lastname: req.user.lastname,

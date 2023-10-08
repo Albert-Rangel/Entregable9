@@ -1,29 +1,66 @@
+{{!--
+<!DOCTYPE html>
+<html>
 
-<div class="container">
-  <div class="card">
-    <h2>Login in Form</h2>
+<head>
+    <title>Login Page</title>
+</head>
 
-    <div class="item-container">
-      <a href="http://localhost:8080/api/github"><i class="fa fa-github" style="font-size: 20px;"></i></a>
+<body>
+    <div class="login-page">
+        <div class="avatar">
+            <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg"
+                alt="Avatar">
+        </div>
+        <div class="form">
+            <h2>Login</h2>
+
+            <div class="item-container">
+                <a href="http://localhost:8080/api/github"><i class="fa fa-github" style="font-size: 20px;"></i></a>
+            </div>
+
+            <div class="item-container">
+                <p>or login using this option</p>
+            </div>
+
+            <form action="http://localhost:8080/api/login" method="post">
+                <input type="text" placeholder="fulanitodetal@example.com">
+                <input type="password" placeholder="Password">
+                <button type="submit">Log in</button>
+            </form>
+            <p class="message">Not registered? <a href="http://localhost:8080/signup">Create an account</a></p>
+            <p class="message">Forgot your password? <a href="http://localhost:8080/recover">Click here to reset it</a>
+            </p>
+        </div>
     </div>
+</body>
 
-    <div class="item-container">
-      <p>or login using this option</p>
+</html> --}}
+
+
+<div class="login-page">
+    <div class="avatar">
+        <img src="https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg"
+            alt="Avatar">
     </div>
+    <div class="form">
+        <h2>Login</h2>
 
-    <form action="http://localhost:8080/api/login" method="post">
+        <div class="item-container">
+            <a href="http://localhost:8080/api/github"><i class="fa fa-github" style="font-size: 20px;"></i></a>
+        </div>
 
-      <label for="email">Email </label>
-      <input id="email" type="text" placeholder="fulanitodetal@example.com" name="email" />
+        <div class="item-container">
+            <p>or login using this option</p>
+        </div>
 
-      <label for="password">Password </label>
-      <input id="password" type="password" placeholder="password" name="password" />
-
-      <button type="submit" class="btn btn--form">Login</button>
-
-      <a href="http://localhost:8080/signup" class="button">No tienes Cuenta? Registrate</a>
-      <a href="http://localhost:8080/recover" class="button">Olvidaste la contraseña?</a>
-
-    </form>
-  </div>
+        <form action="http://localhost:8080/api/login" method="post">
+            <input id="email"  type="text" placeholder="fulanitodetal@example.com" name="email" >
+            <input   id="password" type="password" placeholder="Password" name="password">
+            <button type="submit">Log in</button>
+        </form>
+        <p class="message">Not registered? <a href="http://localhost:8080/signup">Create an account</a></p>
+        <p class="message">Forgot your password? <a href="http://localhost:8080/recover">Click here to reset it</a>
+        </p>
+    </div>
 </div>

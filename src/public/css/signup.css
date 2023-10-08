@@ -4,7 +4,7 @@ body {
      background-size: cover;
   }
   
-  .login-page  {
+  .signup-page {
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
@@ -13,19 +13,8 @@ body {
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
   }
   
-  .avatar {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .avatar img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-  }
-  
   .form {
+    align-self: center;
     position: relative;
     z-index: 1;
     max-width: 360px;
@@ -35,7 +24,9 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
   }
-  
+
+  .form input[type="number"],
+  .form input[type="email"],
   .form input[type="text"],
   .form input[type="password"] {
     font-family: 'Roboto', sans-serif;

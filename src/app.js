@@ -15,10 +15,10 @@ import initiaizePassport from "./config/passport.config.js"
 import MongoStore from "connect-mongo"
 import session from "express-session"
 import mongoose from "mongoose"
-import { uploader } from './dao/middlewares/multer.js'
-import socketEvents from "./socket/index.js"
+// import { uploader } from './dao/middlewares/multer.js'
+// import socketEvents from "./socket/index.js"
 import cookieParser from "cookie-parser"
-import { userModel } from "./dao/models/user.model.js"
+// import { userModel } from "./dao/models/user.model.js"
 
 const productManager = new ProductManager();
 const cartManager = new CartManager();
@@ -89,7 +89,6 @@ Socketserverio.on('connection', async (socket) => {
   })
   socket.on('obtainCartInfo', async (cid) => {
     const cart = await cartManager.getCartById(cid)
-    // const messag = await messagesModel.find().lean()
     Socketserverio.emit('cartInforSend', cart)
   })
   socket.on('addNewProducttoCart', async ({ pid, cid }) => {

@@ -39,15 +39,16 @@ const initiaizePassport = () => {
             { usernameField: 'email' },
             async (username, password, done) => {
                 try {
-
+                    
                     const user = await userModel.findOne({ email: username }).lean();
-                    console.log(user)
+                   
                     if (!user) {
+                        
                         return done(null, false);
                     }
 
                     if (!bcrypt.compareSync(password, user.password)) {
-
+                       
                         return done(null, false);
                     }
 

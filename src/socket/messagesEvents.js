@@ -11,12 +11,6 @@ const messagesEvents = (socketServer) => {
         })
     })
 
-    // socket.on('message', async (data) => {
-    //     await messagesModel.create(data)
-    //     const messag = await messagesModel.find().lean()
-    //     socketServer.emit('newMessage', messag)
-    // })
-
 }
 
 export default messagesEvents

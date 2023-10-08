@@ -18,7 +18,7 @@ router.get("/realTimeProducts", async (req, res) => {
 
 router.get("/home", async (req, res) => {
     const allProducts = await productManager.getProducts_()
-    console.log(allProducts)
+    
     res.render("home", {
         title: "Cards Products",
         style: "home.css",
@@ -28,20 +28,17 @@ router.get("/home", async (req, res) => {
 })
 
 router.get("/products", privateRoutes, async (req, res) => {
-    console.log("entro en products en viewrouter")
-    console.log(req.session)
-
+    
     const firstname = req.session.user.firstname;
     const lastname = req.session.user.lastname;
     const age = req.session.user.age;
     const email_ = req.session.user.email;
-    const Rol = req.session.user.admin ? "Admin" : "User"
-
+    const rol = req.session.user.admin ? "Admin" : "User"
 
     res.render("catalog", {
         title: "Catalog",
         style: "home.css",
-        firstname, lastname, age, email_, Rol
+        firstname, lastname, age, email_, rol
     })
 })
 
@@ -66,7 +63,7 @@ router.get("/carts/:cid", async (req, res) => {
 })
 
 router.get('/login', publicRoutes, (req, res) => {
-    console.log("entro en login viewsrouter")
+   
     res.render("login", {
         title: "Login Form",
         style: "login.css"
@@ -93,7 +90,7 @@ router.get('/signup', publicRoutes, (req, res) => {
 
     res.render("signup", {
         title: "Signup Form",
-        style: "signup.css"
+        style: "login.css"
     })
 });
 
@@ -103,7 +100,7 @@ router.get('/profile', privateRoutes, (req, res) => {
     const lastname = req.session.lastname;
     const age = req.session.age;
     const email_ = req.session.email;
-    const Rol = req.session.admin ? "Admin" : "User"
+    const rol = req.session.admin ? "Admin" : "User"
 
     res.render("catalog", {
         title: "Catalog",
@@ -115,7 +112,11 @@ router.get('/profile', privateRoutes, (req, res) => {
 
 router.get('/failsignup', publicRoutes, (req, res) => {
     
-    res.send("fallo el registro")
+    // res.send("fallo el registro")
+    res.render("failsignup", {
+        title: "failinf page",
+        style: "failsignup.css"
+    })
 });
 
 router.get('/failogin', publicRoutes, (req, res) => {

@@ -14,12 +14,12 @@ const cartsEvents = (socketServer) => {
         console.log(`client connected with id ${socket.id}`)
 
         const productList = await productManager.getProducts();
-        // console.log(productList)
+        
         socketServer.emit('AllProductsCart', productList)
 
         socket.on('obtainCartInfo', async (cid) => {
             const cart = await cartManager.getCartById(cid)
-            // const messag = await messagesModel.find().lean()
+            
             socketServer.emit('cartInforSend', cart)
         })
         socket.on('addNewProducttoCart', async ({ pid, cid }) => {

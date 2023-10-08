@@ -150,136 +150,38 @@ class CartManager {
 
   async updateCartProducts(cid, products) {
     const swFailedBool = false;
-    console.log("entro en el updateCartProducts")
-
+    
     const cartObject = await cartsModel.findById({ _id: cid })
     if (cartObject == undefined || cartObject.length === 0) return `E02|El carro con el id ${cid} no se encuentra agregado.`;
 
-    console.log("VAMOS A STINGIFY PRIOMERO")
     const convertToString = JSON.stringify(products);
-
-    console.log("VAMOS A CONVERTIR EN OBJETO")
     const convertToJSON = JSON.parse(convertToString);
-
-    console.log("VAMOS A CONVERTIR EN STRING")
     const productStringify = JSON.stringify(convertToJSON.products)
-    console.log(productStringify)
-
-    console.log("VAMOS A CONVERTIR EN OBJETO")
     const convertToJSONagain = JSON.parse(productStringify);
-    console.log(convertToJSONagain)
-    // console.log(typeof (convertToJSONagain))
     const listaa =  []
+
     // // Iterate over each object in the array
     convertToJSONagain.forEach(async (product) => {
-
       listaa.push(product.id)
-
-      // console.log("entro en el foreach")
-      // console.log("llamara a getproductbyid dentro el foreach")
-      // console.log(product) // funcionA
-      // console.log(product.id) // funcionA
-      // const productModel = await productManager.getProductById(product.id);
-      // console.log("YA LLAMO a getproductbyid dentro el foreach")
-      // console.log(productModel)
     });
+
     listaa.forEach( async (product) => {
-      // Do something with the product
-      console.log("llamara a getproductbyid dentro el foreach")
-
       const productModel = await productManager.getProductById(product.id);
-      console.log("YA LLAMO a getproductbyid dentro el foreach")
-
     });
-    // for (const product in convertToJSONagain) {
-    //   // console.log( typeof(product) )
-    //   // console.log(product)
-    //   console.log("entro en el for")
-    //   console.log(product)
-    //   console.log(product.id)
-    //   // console.log(JSON.parse(product))
-    //   const productModel = await productManager.getProductById(product.id);
-    //   console.log("llamo al getproducbyidc en el for")
-    //   console.log(typeof(productModel))
-    //   // console.log(productModel)
-
-    //   // const aaa= JSON.stringify(productModel)
-    //   // console.log(aaa)
-
-    //   if (!productModel && productModel == undefined && productModel == []) {
-    //     return `E02|El producto con el id ${product.id} no se encuentra agregado. No se actualizo el Carrito`;
-    //   }
-    // }
-
-
-    //  await convertToJSONagain.forEach( async (product) => {
-
-    //   console.log("entro en el foreach")
-    //   // console.log(product)
-    //   // console.log(typeof (product))
-    //   console.log("llamar a getproductbyid")
-
-    //   const productModel = await productManager.getProductById(product.id);
-
-    //   console.log("ya no llama  a getproductbyid")
-
-
-    //   console.log(typeof (productModel))
-    //   console.log(productModel)
-
-    //   // const sw = typeof(productModel) === 'string'? true : false;
-    //   // console.log(sw)
-    //   if (typeof (productModel) === 'string' || !productModel) {
-    //     console.log("entro en el fallido")
-    //     swFailedBool = true;
-    //   }
-
-    //   swFailedBool = false;
-
-    // });
-
-    console.log("salio del foreach")
-    console.log(swFailedBool)
+   
     if (swFailedBool) return `E02| No se pudo encontrar uno o mas productos indicados, no se actualizo el carrito.`;
-
-    console.log("paso el foreach quiere decir que todos los productos estan en bs")
-
-    // const productObject = await productsModel.find({ _id: pid })
-    // if (productObject == undefined || productObject.length === 0) return `E02|El producto con el id ${pid} no se encuentra agregado.`;
-
-    // let updateObject = await cartsModel.updateOne({
-    //   "_id": cid,
-    //   "products.id": pid
-    // }, {
-    //   $set: {
-    //     "products.$.quantity": quantity
-    //   }
-    // })
-    // if (updateObject.modifiedCount > 0) {
-    //   return `SUC|Producto actualizado del carrito`
-    // } else {
-    //   return `E02|No se pudo actualizar el productocon el id ${pid}`;
-    // }
 
     // Eliminar todos los productos del carrito actual
     carrito.productos = [];
-    console.log("empezara a hacer un push de todos los productos en un nuevo  carro")
 
     // Agregar los nuevos productos
     products.forEach((producto) => {
       carrito.productos.push(producto);
     });
-    console.log("ya empujo todos los nuevos productos al carro")
-    console.log(carrito)
-
-
+    
     // Actualizar el carrito en la base de datos
     carrito.save();
-    console.log("ya salvo")
-
-
   }
-
 }
 
 export default CartManager;

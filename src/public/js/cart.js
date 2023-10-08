@@ -7,7 +7,6 @@ socket.on('AllProductsCart', (data) => {
 
 // Función para actualizar la lista de productos disponibles en el carrito en mi página web
 function updateProductCartList(productList) {
-    console.log(productList)
     const cartDiv = document.getElementById("cartProducts");
     let contenidocambiante = ""
 

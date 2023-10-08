@@ -2,7 +2,6 @@ const socket = io()
 //Le tengo cableado el cartid
 let cid = "6513926aea1ed4bc69f73a0d"
 
-
 socket.on('AllProductsCart', (data) => {
     updateProductCatalogList(data);
 });

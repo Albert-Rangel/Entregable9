@@ -113,16 +113,14 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(session({
-  // store: new fileStore({ path: "/sessions", ttl: 100, retries: 0 }),
+  
   store: MongoStore.create({
     mongoUrl: 'mongodb+srv://albertsleyther:09NbqGe9gecOLTBy@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority',
     ttl: 20   ,
   }),
   secret: 'secretCoder',
   resave: false,
-  saveUninitialized: false
-  // resave: true,
-  // saveUninitialized: true
+  saveUninitialized: false,
 
 }))
 
@@ -130,54 +128,11 @@ initiaizePassport();
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 app.use('/api' , UserRouter)
 app.use('/api/products', ProductRoutes)
 app.use('/api/carts', CartRoutes)
 app.use('/api/chats', ChatsRoutes)
 app.use('/', ViewsRouter)
-
-
-// app.get('/login', (req, res) => {
-//   if (req.session.isLogged) {
-//     return res.send('ya estas logheado');
-//   }
-//   req.session.isLogged = true
-//   res.send("acabas de logear")
-
-// })
-
-// app.get('/cookies', (req, res) => {
-//   res.render("cookies", {
-//     title: "cookies",
-//     style: "cookies.css"
-//   })
-// })
-
-// app.get('/getCookies', (req, res) => {
-//   res.send(req.cookies)
-// })
-
-// app.post('/setCookies', (req, res) => {
-//   const { nombre, valor } = req.body;
-//   res.cookie(nombre, valor, { maxAge: 1000 * 10 }).send('Cookie creada');
-// });
-
-// app.get('/root', (req, res) => {
-//   if (req.session?.nombre) {
-//     console.log("entro en session activa")
-//     const counter = req.session.counter;
-//     req.session.counter = req.session.counter + 1;
-//     res.send(`Hola ${req.session.nombre}, visitaste el sitio ${counter} veces`);
-//   } else {
-//     console.log("entro  primera sessiona")
-
-//     const nombre = req.query.nombre;
-//     req.session.nombre = nombre;
-//     req.session.counter = 1;
-//     res.send(`Te damos la bienvenida`);
-//   }
-// });
 
  //socketEvents(Socketserverio)
 

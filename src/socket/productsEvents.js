@@ -12,8 +12,7 @@ const productsEvents = (socketServer) => {
         const productList = await productManager.getProducts();
 
         socketServer.emit('AllProducts', productList)
-        console.log(productList)
-
+       
         socket.on('sendNewProduct', async (newP) => {
 
             const newProduct = {

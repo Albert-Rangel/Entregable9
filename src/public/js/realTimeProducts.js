@@ -1,8 +1,7 @@
 const socket = io()
 
 socket.on('AllProducts', (data) => {
-    console.log("entro en el serverside")
-    console.log(data)
+   
     updateProductList(data);
 });
 

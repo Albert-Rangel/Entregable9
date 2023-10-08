@@ -7,7 +7,7 @@ const CartRoute = Router();
 CartRoute.get('/byId/:cid', async function (req, res) {
     const cid = req.params.cid
     const cartObject = await cartManager.getCartById(cid);
-    console.log(cartObject)
+    
     const isString = (value) => typeof value === 'string';
     if (isString(cartObject)) {
         const arrayAnswer = ManageAnswer(cartObject)
@@ -110,9 +110,7 @@ CartRoute.put('/:cid/product/:pid', async function (req, res) {
 
 //Actualiza los productos en un carro especifico
 CartRoute.put('/:cid', async function (req, res) {
-    console.log("entro en router")
     const cid = req.params.cid
-    // const id = req.params.pid
     let products = req.body
     const answer = await cartManager.updateCartProducts( cid, products)
     const arrayAnswer = ManageAnswer(answer)

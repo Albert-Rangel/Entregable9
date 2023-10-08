@@ -63,19 +63,6 @@ class ProductManager {
 
       const keyValue = generateKeyValue(key, value);
 
-      // products.prevLink = result.hasPrevPage
-      //   ? `http://localhost:8080/products?page=${products.prevPage}`
-      //   : '';
-      // products.nextLink = result.hasNextPage
-      //   ? `http://localhost:8080/products?page=${products.nextPage}`
-      //   : '';
-      // products.isValid = !(page <= 0 || page > products.totalPages);
-
-      // return res.render('students', result);
-
-      // const products = await productsModel.find().lean();
-      // return products.sort((a, b) => a.id - b.id).slice(0, limit==null?10: limit);
-      // console.log(products)
       return products
 
     } catch (error) {
@@ -85,9 +72,7 @@ class ProductManager {
 
   async getProductById(pid) {
     try {
-      // console.log("entro em el getproductbiyis")
       const found = await productsModel.find({ _id: pid });
-      // console.log(found)
 
       if (found == undefined) return `E02|El producto con el id ${pid} no se encuentra agregado.`;
       return found;

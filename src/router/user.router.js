@@ -2,7 +2,7 @@ import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import { userModel } from '../dao/models/user.model.js';
 import publicRoutes from "../dao/middlewares/publicRoutes.js"
-import passport from 'passport';
+import passport  from 'passport';
 import privateRoutes from '../dao/middlewares/privateRoutes.js';
 
 const router = Router();
@@ -27,13 +27,14 @@ router.post(
       };
     } else {
       req.session.user = {
-        firstname: req.user.first_name,
-        lastname: req.user.last_name,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
         email: req.user.email,
         age: req.user.age,
         admin: false
       };
     }
+    req.session.isLogged = true;
     console.log("todo chevere ac ontinaucion la session del usuario")
     console.log(req.session.user)
     // const { email, password } = req.body;
@@ -121,5 +122,23 @@ router.post('/recover', publicRoutes, async (req, res) => {
 
   res.redirect('/login');
 });
+
+router.get("/github", 
+passport.authenticate("github", {scope: ["user:email"]}))
+
+router.get("/githubcallback", 
+passport.authenticate("github",  { failureRedirect: "/login" }),
+ (req, res) => {
+  req.session.user = {
+    firstname: req.user.firstname,
+    lastname: req.user.lastname,
+    email: req.user.email,
+    age: req.user.age,
+    admin: false
+  };
+  req.session.isLogged = true;
+
+  res.redirect("/products")
+})
 
 export default router;

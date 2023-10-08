@@ -22,6 +22,19 @@
 <div class="container">
   <div class="card">
     <h2>Login in Form</h2>
+
+    <div class="item-container">
+      {{!-- <button class="btn"><i class="fa fa-github "></i></button> --}}
+      {{!-- <a href="#" style="font-size: 20px; padding: 10px; margin: 10px;" target="blank"><i class="fa fa-github"></i></a> --}}
+      <a href="http://localhost:8080/api/github"><i class="fa fa-github" style="font-size: 20px;"></i></a>
+    </div>
+
+    
+
+    <div class="item-container">
+      <p>or login using this option</p>
+    </div>
+
     <form action="http://localhost:8080/api/login" method="post">
 
       <label for="email">Email </label>
@@ -34,6 +47,13 @@
 
       <a href="http://localhost:8080/signup" class="button">No tienes Cuenta? Registrate</a>
       <a href="http://localhost:8080/recover" class="button">Olvidaste la contraseña?</a>
+
+      {{!-- <div class="social-icons">
+        <a href="#" class="social-login__icon fab fa-instagram"></a>
+        <a href="#" class="social-login__icon fab fa-facebook"></a>
+        <a href="#" class="social-login__icon fab fa-twitter"></a>
+      </div> --}}
+
     </form>
   </div>
 </div>

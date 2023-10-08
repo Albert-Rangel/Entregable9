@@ -119,12 +119,17 @@ app.use(session({
     ttl: 20   ,
   }),
   secret: 'secretCoder',
-  resave: true,
-  saveUninitialized: true
+  resave: false,
+  saveUninitialized: false
+  // resave: true,
+  // saveUninitialized: true
 
 }))
 
 initiaizePassport();
+app.use(passport.initialize())
+app.use(passport.session())
+
 
 app.use('/api' , UserRouter)
 app.use('/api/products', ProductRoutes)

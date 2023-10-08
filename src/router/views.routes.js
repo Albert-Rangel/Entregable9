@@ -29,11 +29,13 @@ router.get("/home", async (req, res) => {
 
 router.get("/products", privateRoutes, async (req, res) => {
     console.log("entro en products en viewrouter")
-    const firstname = req.session.firstname;
-    const lastname = req.session.lastname;
-    const age = req.session.age;
-    const email_ = req.session.email;
-    const Rol = req.session.admin ? "Admin" : "User"
+    console.log(req.session)
+
+    const firstname = req.session.user.firstname;
+    const lastname = req.session.user.lastname;
+    const age = req.session.user.age;
+    const email_ = req.session.user.email;
+    const Rol = req.session.user.admin ? "Admin" : "User"
 
 
     res.render("catalog", {

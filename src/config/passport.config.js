@@ -1,5 +1,6 @@
 import passport from "passport";
 import local from "passport-local";
+import githubStrategy from "passport-github2"
 import { userModel } from '../dao/models/user.model.js';
 import bcrypt from 'bcrypt';
 
@@ -53,7 +54,7 @@ const initiaizePassport = () => {
                     }
 
                     const user = await userModel.findOne({ email: username }).lean();
-                   
+
                     if (!user) {
                         return done(null, false);
                     }
@@ -72,6 +73,37 @@ const initiaizePassport = () => {
             }
         )
     );
+
+    passport.use("github", new githubStrategy(
+        {
+            clientID: 'Iv1.abfb4e2fbb512adf',
+            clientSecret: '5cebb1e4cedf69bf9dfbab76082420b4d62d0b17',
+            callbackURL: 'http://localhost:8080/api/githubcallback',
+            scope: ['user:email'],
+        }, async (accessToken, refreshToken, profile, done) => {
+            try {
+                const fullname = profile._json.name;
+                const words = fullname.split(' ');
+                const email = profile.emails[0].value;
+                const user = await userModel.findOne({ email });
+                if (!user) {
+                    const newUser = await userModel.create({
+                        firstname: words[0],
+                        lastname: words[1],
+                        age: 18,    
+                        password: '',
+                        email,
+                    });
+
+                    done(null, newUser);
+                } else {
+                    done(null, user);
+                }
+            } catch (error) {
+                done(error);
+            }
+        }
+    ));
 
     passport.serializeUser((user, done) => {
         console.log("serializo el usuario")

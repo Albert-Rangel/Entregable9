@@ -99,7 +99,7 @@ const initiaizePassport = () => {
 
     passport.deserializeUser(async (id, done) => {
         const user = await userModel.findById(id);
-        console.log(user)
+        
         done(null, user);
     });
 }

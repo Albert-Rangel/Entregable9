@@ -34,7 +34,7 @@ const HTTPserver = app.listen(port, () =>
 async function connectToMongoose() {
   try {
     //Conetando con Atlas
-    await mongoose.connect('mongodb+srv://albertsleyther:09NbqGe9gecOLTBy@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority');
+    await mongoose.connect('mongodb+srv://albertsleyther:<password>@ecommerce.6lrddnh.mongodb.net/?retryWrites=true&w=majority');
   } catch (error) {
     console.error(`Failed to connect to Mongoose: ${error}`);
   }

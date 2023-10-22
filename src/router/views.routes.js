@@ -33,12 +33,12 @@ router.get("/products", privateRoutes, async (req, res) => {
     const lastname = req.session.user.lastname;
     const age = req.session.user.age;
     const email_ = req.session.user.email;
-    const rol = req.session.user.rol;
+    const role = req.session.user.role;
 
     res.render("catalog", {
         title: "Catalog",
         style: "catalog.css",
-        firstname, lastname, age, email_, rol
+        firstname, lastname, age, email_, role
     })
 })
 
@@ -100,12 +100,12 @@ router.get('/profile', privateRoutes, (req, res) => {
     const lastname = req.session.lastname;
     const age = req.session.age;
     const email_ = req.session.email;
-    const rol = req.session.admin ? "Admin" : "User"
+    const role = req.session.admin ? "Admin" : "User"
 
     res.render("catalog", {
         title: "Catalog",
         style: "home.css",
-        firstname, lastname, age, email_, Rol
+        firstname, lastname, age, email_, role
     })
 
 });

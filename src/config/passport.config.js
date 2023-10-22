@@ -27,7 +27,7 @@ const initiaizePassport = () => {
                     email,
                     age,
                     password: bcrypt.hashSync(password, bcrypt.genSaltSync(10)),
-                    rol: email == "adminCoder@coder.com" ? "Admin" : "User",
+                    role: email == "adminCoder@coder.com" ? "Admin" : "User",
                 });
 
                 return done(null, user)
@@ -80,7 +80,7 @@ const initiaizePassport = () => {
                         age: 18,
                         password: '',
                         email,
-                        rol: email == "adminCoder@coder.com" ? "Admin" : "User",
+                        role: email == "adminCoder@coder.com" ? "Admin" : "User",
                     });
 
                     done(null, newUser);

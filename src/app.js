@@ -8,7 +8,7 @@ import ChatsRoutes from './router/chat.routes.js'
 import CartRoutes from './router/cartMongo.routes.js'
 import ProductManager from './dao/db/ProductManager.js'
 import ViewsRouter from './router/views.routes.js'
-import UserRouter from './router/user.router.js'
+import SessionRouter from './router/session.router.js'
 import passport from "passport"
 import initiaizePassport from "./config/passport.config.js"
 // import { FileStore } from "session-file-store"
@@ -127,7 +127,7 @@ initiaizePassport();
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use('/api' , UserRouter)
+app.use('/api' , SessionRouter)
 app.use('/api/products', ProductRoutes)
 app.use('/api/carts', CartRoutes)
 app.use('/api/chats', ChatsRoutes)

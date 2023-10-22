@@ -21,7 +21,7 @@ router.post(
       email: req.user.email,
       age: req.user.age,
       admin: false,
-      rol:  req.user.rol,
+      role: req.user.role,
     };
     req.session.isLogged = true;
 
@@ -62,12 +62,36 @@ router.get("/githubcallback",
       lastname: req.user.lastname,
       email: req.user.email,
       age: req.user.age,
-      rol:  req.user.rol,
+      role: req.user.role,
       admin: false
     };
     req.session.isLogged = true;
 
     res.redirect("/products")
   })
+
+  router.post(
+    '/current', publicRoutes,
+    passport.authenticate('login', { failureRedirect: '/failogin' }),
+    async (req, res) => {
+      if (!req.user) {
+        res.status(400).send();
+      }
+  
+      req.session.user = {
+        firstname: req.user.firstname,
+        lastname: req.user.lastname,
+        email: req.user.email,
+        age: req.user.age,
+        admin: false,
+        role: req.user.role,
+      };
+
+      req.session.isLogged = true;
+  
+      res.send(req.user);
+    }
+  );
+
 
 export default router;
